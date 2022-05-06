@@ -1,0 +1,48 @@
+<body>
+  <input type="text" id="theText" placeholder="Enter in a value"/>
+  <input type="button" value="submit"/>
+  <div>Your set now contains: <span id="theSet">{}</span></div>
+
+  <script>
+      // move the script to execute within the body of the
+      // html, after the needed nodes have loaded
+      class _Set extends Set {
+          add(...args) {
+              for (const x of args) {
+                  super.add(x)
+              }
+              return this;
+          }
+          // moving the helper function to parse strings
+          // into a static method
+          static getArrayFromInput(text) {
+              let arr = [];
+              if (text.includes(',')) {
+                  arr = text.split(',').map(x => x.trim());
+              } else {
+                  arr = [text,];
+              }
+              return arr;
+          }
+      }
+      const s = new _Set();
+      // css selector needs to be on input[type=button]
+      // and not input[type="button"] or button
+      const button = document.querySelector('input[type=button]');
+      const text = document.getElementById('theSet');
+
+      // now we can add the event listener,
+      // since the button node has been fetched
+      button.addEventListener('click', () => {
+          // get the input[type=text] Node
+          const rawValueNode = document.getElementById('theText');
+          // pass the value contained in the input
+          // to the function the get the vallues as arr
+          const arr = _Set.getArrayFromInput(rawValueNode.value);
+          // add the values into the set
+          s.add(...arr);
+          // finally, format how we want to response to look in the html
+          text.textContent = `Set(${s.size}) = ${Array.from(s)}`;
+      });
+  </script>
+</body>
