@@ -1,7 +1,3 @@
-
-
-
-
 const square = x => x*x;
 const average = (x,y) => (x+y)/2;
 const improve = (guess, x) => average(guess, x/guess);
