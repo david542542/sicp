@@ -19,8 +19,8 @@ https://stackoverflow.com/a/58327112/633183
 import { Table, Data } from "./Table.js"
 
 const initialData = [
-	Data("fruits", new Set(["🍉","🍋","🥑"])),
-	Data("vegetables", new Set(["🥦","🌶","🌽","🧄"]))
+  Data("fruits", new Set(["🍉","🍋","🥑"])),
+  Data("vegetables", new Set(["🥦","🌶","🌽","🧄"]))
 ]
 
 const t = new Table(document.querySelector("#app"), initialData)

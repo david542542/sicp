@@ -4,18 +4,18 @@ const VOID_ELEMENTS = new Set([
 ])
 
 function e(tag, attributes = {}, ...children) {
-	// tag
-	const elem = document.createElement(tag)
-	// attributes
-	for (const [attr, value] of Object.entries(attributes))
-	  setAttribute(elem, attr, value)
-	// void element?
+  // tag
+  const elem = document.createElement(tag)
+  // attributes
+  for (const [attr, value] of Object.entries(attributes))
+    setAttribute(elem, attr, value)
+  // void element?
   if (VOID_ELEMENTS.has(tag)) return elem
   //children
-	for (const child of eFromChildren(children))
-		elem.appendChild(child)
-	// done
-	return elem
+  for (const child of eFromChildren(children))
+    elem.appendChild(child)
+  // done
+  return elem
 }
 
 function setAttribute(elem, attr, value) {
@@ -31,20 +31,20 @@ function addEventListener(elem, eventType, listener) {
 }
 
 function* eFromChildren(children) {
-	for (const child of children.flat(Infinity))
-		switch (child?.constructor) {
-			case undefined:
-				continue
-			case String: case Number:
-				yield document.createTextNode(child)
-				continue
-			default:
-				yield child
-		}
+  for (const child of children.flat(Infinity))
+    switch (child?.constructor) {
+      case undefined:
+        continue
+      case String: case Number:
+        yield document.createTextNode(child)
+        continue
+      default:
+        yield child
+    }
 }
 
 function clear(elem) {
-	while(elem.hasChildNodes())
+  while(elem.hasChildNodes())
     elem.removeChild(elem.lastChild)
 }
 
