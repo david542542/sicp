@@ -20,7 +20,7 @@ class Table {
 	}
 
 	onInput(event) {
-		this.nameText = e.target.value // ⚠️
+		this.nameText = event.target.value // ⚠️
 	}
 
 	onCreate(event) {
