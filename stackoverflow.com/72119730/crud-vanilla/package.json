@@ -1,0 +1,12 @@
+{
+	"private": true,
+	"scripts": {
+		"start": "wmr",
+		"build": "wmr build --prerender",
+		"serve": "wmr serve"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"wmr": "^3.7.2"
+	}
+}
