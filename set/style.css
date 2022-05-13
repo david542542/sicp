@@ -1,0 +1,23 @@
+body {
+    margin: 0 10%;
+    min-height: 100%;
+    font-family: system-ui, sans-serif;
+  }
+  
+  #app {
+    background-color: #ffc;
+    padding: 1rem;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  thead {
+    text-align: left;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
