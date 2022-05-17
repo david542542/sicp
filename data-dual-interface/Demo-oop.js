@@ -1,6 +1,6 @@
-import { Data } from "./Data.js"
+import { Data } from "./LambdaData.js"
 
-const t = Data.of("fruits", new Set).add("🥑").add("🍋")
+const dataObj = Data.of("fruits", new Set).add("🥑").add("🍋")
 
 console.log("\n\n== oop ==")
-console.log(t.name(), t.elements(), t.size())
+console.log(dataObj.name, dataObj.elements, dataObj.size);

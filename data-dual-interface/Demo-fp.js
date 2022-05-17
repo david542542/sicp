@@ -1,6 +1,6 @@
-import { data, add, name, elements, size } from "./Data.js"
+import { data, add, name, elements, size } from "./LambdaData.js"
 
-const t = add(add(data("fruits", new Set), "🥑"), "🍋")
+const dataObj = add(add(data("fruits", new Set), "🥑"), "🍋");
 
-console.log("\n\n== fp ==")
-console.log(name(t), elements(t), size(t))
+console.log("\n\n== fp** ==");
+console.log(name(dataObj), elements(dataObj), size(dataObj));

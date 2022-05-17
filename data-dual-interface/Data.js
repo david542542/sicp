@@ -3,36 +3,33 @@ function data(name, elements) {
     return [name, elements] // array
   }
   
-  // name: 'v data -> string
-  function name(t) {
-    return t[0] // select first element
-  }
+// name: 'v data -> string
+function name(dataObject) {
+  return dataObject[0] // select first element -- the name
+}
+
+// elements: 'v data -> 'v set
+function elements(dataObject) {
+  return dataObject[1] // select second element -- the set
+}
   
-  // elements: 'v data -> 'v set
-  function elements(t) {
-    return t[1] // select second element
-  }
+// add : ('v data, 'v) -> 'v data
+function add(dataObject, elem) {
+  return data(name(dataObject), new Set(elements(dataObject)).add(elem))
+}
   
-  // add : ('v data, 'v) -> 'v data
-  function add(t, elem) {
-    return data(
-      name(t),
-      new Set(elements(t)).add(elem)
-    )
-  }
+// size: 'v data -> number
+function size(dataObject) {
+  return elements(dataObject).size
+}
   
-  // size: 'v data -> number
-  function size(t) {
-    return elements(t).size
-  }
-  
-  class Data {
-    constructor(t) { this.t = t }
-    add(elem) { return new Data(add(this.t, elem)) }
-    name() { return name(this.t) }
-    elements() { return elements(this.t) }
-    size() { return size(this.t) }
-    static of (name, elem) { return new Data(data(name, elem)) }
-  }
-  
-  export { Data, data, add, name, elements, size }
+class Data {
+  constructor(t) { this.t = t }
+  add(elem) { return new Data(add(this.t, elem)) }
+  get name() { return name(this.t) }
+  get elements() { return elements(this.t) }
+  get size() { return size(this.t) }
+  static of (name, elem) { return new Data(data(name, elem)) }
+}
+
+export { Data, data, add, name, elements, size }
