@@ -38,25 +38,22 @@
 (times-linear-iterative 4 7 0)
 
 ; log-time, iterative process, maintaining a stack of operations
-(define (times-stack a b stack)
+(define (times-stack a b)
   (define (double num) (* num 2))
   (define (plus_a num) (+ num a))
-  (cond 
-    ((= b 0) stack)
-    ((odd? b) (times-stack a (- b 1) (cons plus_a stack)))
-    (else     (times-stack a (/ b 2) (cons double stack))))
-)
-(define (evaluate-stack stack acc)
-  (if (null? stack)
-    acc
-    (evaluate-stack (cdr stack) ((car stack) acc)))
+  (define (loop a b stack)
+    (cond 
+      ((= b 0) stack)
+      ((odd? b) (loop a (- b 1) (cons plus_a stack)))
+       (else    (loop a (/ b 2) (cons double stack)))))
+  (define (evaluate-stack stack acc)
+    (if (null? stack)
+         acc
+         (evaluate-stack (cdr stack) ((car stack) acc))))
+  (evaluate-stack (loop a b '()) 0)
 )
 
-
-(evaluate-stack 
-  (times-stack 4 7 '())
-  0
-)
+(times-stack 4 7)
 
 
 
